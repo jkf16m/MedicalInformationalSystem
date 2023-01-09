@@ -4,6 +4,7 @@ using ClientAndBackend_MIS.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClientAndBackendMIS.Migrations
 {
     [DbContext(typeof(MISContext))]
-    partial class MISContextModelSnapshot : ModelSnapshot
+    [Migration("20230109023214_SymptomTableAddedAndOwnedEntities")]
+    partial class SymptomTableAddedAndOwnedEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,14 +194,11 @@ namespace ClientAndBackendMIS.Migrations
                                 .HasForeignKey("DoctorId");
                         });
 
-                    b.Navigation("LivingAddress")
-                        .IsRequired();
+                    b.Navigation("LivingAddress");
 
-                    b.Navigation("Name")
-                        .IsRequired();
+                    b.Navigation("Name");
 
-                    b.Navigation("Salary")
-                        .IsRequired();
+                    b.Navigation("Salary");
                 });
 
             modelBuilder.Entity("ClientAndBackend_MIS.Entities.IllnessSection.Illness", b =>
@@ -264,11 +264,9 @@ namespace ClientAndBackendMIS.Migrations
                                 .HasForeignKey("PatientId");
                         });
 
-                    b.Navigation("LivingAddress")
-                        .IsRequired();
+                    b.Navigation("LivingAddress");
 
-                    b.Navigation("Name")
-                        .IsRequired();
+                    b.Navigation("Name");
                 });
 
             modelBuilder.Entity("ClientAndBackend_MIS.Entities.SymptomSection.Symptom", b =>
